@@ -5,6 +5,7 @@ import { sans, mono, display } from '../fonts';
 import '../globals.css';
 import { locales, type Locale } from '../../i18n';
 import Header from '../../components/header';
+import Footer from '../../components/footer';
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -65,6 +66,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider messages={messages}>
           <Header locale={locale as Locale} />
           <main>{children}</main>
+          <Footer locale={locale as Locale} />
         </NextIntlClientProvider>
       </body>
     </html>
