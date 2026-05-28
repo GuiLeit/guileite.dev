@@ -83,15 +83,7 @@ export default function Header({ locale }: { locale: Locale }) {
           </span>
         </Link>
 
-        {/* Nav — hidden on mobile */}
-        <nav className="hidden items-center gap-8 md:flex" aria-label="Main navigation">
-          <NavLink href={`/${locale}/projects`} index="01" active={isProjectsPage}>
-            {t('nav.projects')}
-          </NavLink>
-          <NavLink href={`/${locale}#contact`} index="02" active={false}>
-            {t('nav.contact')}
-          </NavLink>
-        </nav>
+        
 
         {/* Controls */}
         <div className="flex items-center gap-2">

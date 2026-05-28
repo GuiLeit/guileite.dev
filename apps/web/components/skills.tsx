@@ -15,6 +15,7 @@ export default async function Skills({ locale }: { locale: Locale }) {
 
   return (
     <section
+      id="stack"
       style={{ padding: 'clamp(64px, 8vh, 96px) var(--gutter)' }}
     >
       <div className="mx-auto" style={{ maxWidth: 'var(--container)' }}>

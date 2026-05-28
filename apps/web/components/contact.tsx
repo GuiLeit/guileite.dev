@@ -34,12 +34,12 @@ export default async function Contact() {
                   </span>
                   <span className="hidden flex-1 border-t border-border group-hover:border-accent sm:block" aria-hidden />
                   <span
-                    className="font-display text-fg transition-colors duration-150 group-hover:text-accent"
+                    className="flex-1 text-right font-display text-fg transition-colors duration-150 group-hover:text-accent sm:flex-none sm:text-left"
                     style={{ fontSize: 'clamp(22px, 2.6vw, 36px)' }}
                   >
                     {item.value}
                   </span>
-                  <span className="ml-auto font-mono text-[13px] text-fg-subtle transition-colors duration-150 group-hover:text-accent">↗</span>
+                  <span className="font-mono text-[13px] text-fg-subtle transition-colors duration-150 group-hover:text-accent sm:ml-auto">↗</span>
                 </a>
               </li>
             );

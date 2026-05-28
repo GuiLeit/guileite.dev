@@ -3,13 +3,12 @@ import { getTranslations } from 'next-intl/server';
 import type { Locale } from '../i18n';
 import Portrait from './portrait';
 
-const RAIL_ITEMS = ['INDEX', 'ABOUT', 'STACK', 'WORK', 'CONTACT'] as const;
-
 export default async function Hero({ locale }: { locale: Locale }) {
   const t = await getTranslations('hero');
 
   return (
     <section
+      id="index"
       className="relative overflow-hidden"
       style={{ padding: 'clamp(64px, 10vh, 120px) var(--gutter)' }}
       aria-label="Hero"
@@ -34,30 +33,11 @@ export default async function Hero({ locale }: { locale: Locale }) {
         style={{
           maxWidth: 'var(--container)',
           display: 'grid',
-          gridTemplateColumns: '92px 1fr 360px',
+          gridTemplateColumns: '1fr 360px',
           gap: 'clamp(28px, 5vw, 88px)',
           alignItems: 'start',
         }}
       >
-        {/* Left rail — desktop only (hidden <720px) */}
-        <aside aria-hidden className="hero-rail flex flex-col gap-3 font-mono" style={{ position: 'sticky', top: '96px' }}>
-          {RAIL_ITEMS.map((label, i) => (
-            <div
-              key={label}
-              className="flex items-center gap-3.5 text-[11px] uppercase tracking-[0.14em]"
-              style={{ color: i === 1 ? 'var(--fg)' : 'var(--fg-subtle)' }}
-            >
-              <span
-                className="w-7 text-right"
-                style={{ color: i === 1 ? 'var(--accent)' : 'var(--fg-subtle)' }}
-              >
-                0{i + 1}
-              </span>
-              <span>{label}</span>
-            </div>
-          ))}
-        </aside>
-
         {/* Main content */}
         <div className="min-w-0">
           <p className="text-eyebrow mb-6">{t('eyebrow')}</p>
@@ -92,6 +72,7 @@ export default async function Hero({ locale }: { locale: Locale }) {
           </p>
 
           <p
+            id="about"
             className="mb-10 font-sans leading-[1.65] text-fg-muted"
             style={{ fontSize: '17px', maxWidth: '56ch', textWrap: 'pretty' } as React.CSSProperties}
           >
@@ -146,15 +127,13 @@ export default async function Hero({ locale }: { locale: Locale }) {
         </aside>
       </div>
 
-      {/* Responsive grid + rail visibility + pulse animation */}
+      {/* Collapse portrait column below xl, pulse animation */}
       <style>{`
         @media (max-width: 1100px) {
           section[aria-label="Hero"] > div[style*="grid-template-columns"] {
             grid-template-columns: 1fr !important;
           }
         }
-        .hero-rail { display: flex; }
-        @media (max-width: 720px) { .hero-rail { display: none !important; } }
         @keyframes pulse-dot {
           0%, 100% { opacity: 1; }
           50% { opacity: 0.4; }

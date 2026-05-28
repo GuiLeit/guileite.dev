@@ -5,6 +5,7 @@ import Hero from '../../components/hero';
 import Skills from '../../components/skills';
 import FeaturedProjects from '../../components/featured-projects';
 import Contact from '../../components/contact';
+import HeroRail from '../../components/hero-rail';
 
 export async function generateMetadata({
   params,
@@ -25,10 +26,29 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   setRequestLocale(locale);
   return (
     <>
-      <Hero locale={locale as Locale} />
-      <Skills locale={locale as Locale} />
-      <FeaturedProjects locale={locale as Locale} />
-      <Contact />
+      {/* Centered page grid: rail hugs the left edge of the content container */}
+      <style>{`
+        .page-with-rail {
+          display: grid;
+          grid-template-columns: 92px 1fr;
+          max-width: calc(var(--container) + 92px);
+          margin-left: auto;
+          margin-right: auto;
+        }
+        @media (max-width: 720px) {
+          .page-with-rail { display: block; }
+          .hero-rail { display: none; }
+        }
+      `}</style>
+      <div className="page-with-rail">
+        <HeroRail />
+        <div>
+          <Hero locale={locale as Locale} />
+          <Skills locale={locale as Locale} />
+          <FeaturedProjects locale={locale as Locale} />
+          <Contact />
+        </div>
+      </div>
     </>
   );
 }
