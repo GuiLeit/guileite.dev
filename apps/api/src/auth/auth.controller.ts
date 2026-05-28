@@ -1,13 +1,13 @@
 import { Body, Controller, Get, HttpCode, Post, Req, Res, UseGuards } from '@nestjs/common';
 import { ApiBody, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { Request, Response } from 'express';
-import { IsString } from 'class-validator';
+import { IsNotEmpty, IsString } from 'class-validator';
 import { AuthService } from './auth.service';
 import { JwtAuthGuard } from './jwt-auth.guard';
 
 class LoginDto {
-  @ApiBody({ schema: { properties: { password: { type: 'string' } } } })
   @IsString()
+  @IsNotEmpty()
   password: string;
 }
 
@@ -19,6 +19,7 @@ export class AuthController {
   @Post('login')
   @HttpCode(200)
   @ApiOperation({ summary: 'Admin login — sets HttpOnly cookie' })
+  @ApiBody({ schema: { properties: { password: { type: 'string' } } } })
   async login(@Body() body: LoginDto, @Res({ passthrough: true }) res: Response) {
     const token = await this.auth.login(body.password);
     const isProduction = process.env.NODE_ENV === 'production';
