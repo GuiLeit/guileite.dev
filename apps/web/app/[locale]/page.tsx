@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { Locale } from '../../i18n';
 import Hero from '../../components/hero';
 import Skills from '../../components/skills';
@@ -11,6 +11,7 @@ export async function generateMetadata({
 }: {
   params: { locale: string };
 }): Promise<Metadata> {
+  setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: 'hero' });
   return {
     title: 'Guilherme Leite — Software Developer',
@@ -19,6 +20,7 @@ export async function generateMetadata({
 }
 
 export default function HomePage({ params: { locale } }: { params: { locale: string } }) {
+  setRequestLocale(locale);
   return (
     <>
       <Hero locale={locale as Locale} />

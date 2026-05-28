@@ -1,15 +1,21 @@
 import type { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { Locale } from '../../../i18n';
+import { locales } from '../../../i18n';
 import { getProjects } from '../../../lib/api';
 import ProjectsGrid from '../../../components/projects-grid';
 import Pagination from '../../../components/pagination';
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
 
 export async function generateMetadata({
   params: { locale },
 }: {
   params: { locale: string };
 }): Promise<Metadata> {
+  setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: 'projectsPage' });
   return { title: t('title') };
 }
@@ -21,6 +27,7 @@ interface ProjectsPageProps {
 
 export default async function ProjectsPage({ params, searchParams }: ProjectsPageProps) {
   const locale = params.locale as Locale;
+  setRequestLocale(locale);
   const page = Math.max(1, Number(searchParams.page ?? 1));
   const LIMIT = 9;
 

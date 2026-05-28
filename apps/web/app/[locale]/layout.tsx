@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages, getTranslations } from 'next-intl/server';
+import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { sans, mono, display } from '../fonts';
 import '../globals.css';
 import { locales, type Locale } from '../../i18n';
@@ -16,6 +16,7 @@ export async function generateMetadata({
 }: {
   params: { locale: string };
 }): Promise<Metadata> {
+  setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: 'hero' });
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://guileite.dev';
   return {
@@ -46,6 +47,7 @@ export default async function LocaleLayout({
   children: React.ReactNode;
   params: { locale: string };
 }) {
+  setRequestLocale(locale);
   const messages = await getMessages();
 
   return (
