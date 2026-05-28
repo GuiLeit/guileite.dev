@@ -1,0 +1,72 @@
+{
+  "nav": {
+    "work": "Trabalhos",
+    "contact": "Contato",
+    "projects": "Projetos"
+  },
+  "hero": {
+    "eyebrow": "ATUALMENTE / EM SÃO PAULO",
+    "role": "Software Developer",
+    "headline": "Construindo ferramentas pequenas, deliberadas e duráveis.",
+    "bio": "Sou desenvolvedor com foco em sistemas distribuídos, ferramentas para devs e interfaces que não envelhecem mal. Escrevo principalmente em TypeScript e Go. Antes disso, fui engenheiro de áudio — uma profissão diferente que me ensinou as mesmas coisas: ouvir antes de falar e medir antes de decidir.",
+    "ctaProjects": "Ver projetos",
+    "ctaContact": "Entrar em contato",
+    "meta": {
+      "status": "Aberto a colaborações",
+      "location": "São Paulo · GMT-3",
+      "updated": "Atualizado 27.MAI.2026",
+      "portrait": "RETRATO / 2025"
+    }
+  },
+  "skills": {
+    "title": "Stack",
+    "caption": "Ferramentas que uso com frequência e confiança.",
+    "groups": {
+      "languages": "Linguagens",
+      "frameworks": "Frameworks",
+      "tools": "Ferramentas",
+      "databases": "Bancos de dados"
+    }
+  },
+  "featured": {
+    "title": "Trabalhos selecionados",
+    "caption": "Três projetos recentes. A lista completa fica logo adiante.",
+    "seeMore": "Ver todos os projetos",
+    "live": "Demo",
+    "repo": "Repositório"
+  },
+  "contact": {
+    "title": "Contato",
+    "caption": "A maneira mais rápida é por e-mail. Costumo responder no mesmo dia.",
+    "labels": {
+      "email": "E-mail",
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "twitter": "X"
+    }
+  },
+  "projectsPage": {
+    "title": "Todos os projetos",
+    "caption": "Arquivo completo, do mais recente ao mais antigo.",
+    "empty": "Ainda não há projetos publicados.",
+    "pageOf": "Página {page} de {total}",
+    "prev": "Anterior",
+    "next": "Próximo"
+  },
+  "modal": {
+    "close": "Fechar",
+    "prev": "Imagem anterior",
+    "next": "Próxima imagem",
+    "visit": "Visitar projeto",
+    "code": "Ver código"
+  },
+  "footer": {
+    "tag": "Site pessoal, escrito à mão.",
+    "source": "Código-fonte",
+    "copyright": "© {year} Guilherme Leite"
+  },
+  "common": {
+    "lang": "Idioma",
+    "theme": "Tema"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "nav": {
+    "work": "Work",
+    "contact": "Contact",
+    "projects": "Projects"
+  },
+  "hero": {
+    "eyebrow": "CURRENTLY / IN SÃO PAULO",
+    "role": "Software Developer",
+    "headline": "Building small, deliberate, durable tools.",
+    "bio": "Developer focused on distributed systems, developer tooling and interfaces that age well. I mostly write TypeScript and Go. Before this, I was an audio engineer — a different trade that taught me the same things: listen before you speak, measure before you decide.",
+    "ctaProjects": "See projects",
+    "ctaContact": "Get in touch",
+    "meta": {
+      "status": "Open to collaborations",
+      "location": "São Paulo · GMT-3",
+      "updated": "Updated 2026-05-27",
+      "portrait": "PORTRAIT / 2025"
+    }
+  },
+  "skills": {
+    "title": "Stack",
+    "caption": "Tools I use often and with confidence.",
+    "groups": {
+      "languages": "Languages",
+      "frameworks": "Frameworks",
+      "tools": "Tools",
+      "databases": "Databases"
+    }
+  },
+  "featured": {
+    "title": "Selected work",
+    "caption": "Three recent projects. The full list is just below.",
+    "seeMore": "See all projects",
+    "live": "Demo",
+    "repo": "Repository"
+  },
+  "contact": {
+    "title": "Contact",
+    "caption": "Email is fastest. I usually reply the same day.",
+    "labels": {
+      "email": "Email",
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "twitter": "X"
+    }
+  },
+  "projectsPage": {
+    "title": "All projects",
+    "caption": "The full archive, newest to oldest.",
+    "empty": "No projects published yet.",
+    "pageOf": "Page {page} of {total}",
+    "prev": "Previous",
+    "next": "Next"
+  },
+  "modal": {
+    "close": "Close",
+    "prev": "Previous image",
+    "next": "Next image",
+    "visit": "Visit project",
+    "code": "View code"
+  },
+  "footer": {
+    "tag": "Personal site, written by hand.",
+    "source": "Source",
+    "copyright": "© {year} Guilherme Leite"
+  },
+  "common": {
+    "lang": "Language",
+    "theme": "Theme"
+  }
+}
