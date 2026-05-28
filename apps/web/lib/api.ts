@@ -148,11 +148,8 @@ async function apiFetch<T>(path: string, options?: RequestInit): Promise<T> {
 const USE_STUB = process.env.NEXT_PUBLIC_USE_STUB === 'true';
 
 export async function getFeaturedProjects(locale: Locale, limit = 3): Promise<Project[]> {
-  if (USE_STUB) return getStubProjects(locale).slice(0, limit);
-  return apiFetch<Project[]>(
-    `/projects/featured?limit=${limit}&locale=${locale}`,
-    { next: { revalidate: 60 } },
-  );
+  // if (USE_STUB) return getStubProjects(locale).slice(0, limit);
+  
 }
 
 export async function getProjects(

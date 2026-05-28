@@ -192,7 +192,6 @@ node -e "const b=require('bcryptjs'); b.hash('your-password', 12).then(console.l
 ```bash
 # Run certbot before starting nginx (HTTP-only mode first)
 sudo certbot certonly --nginx -d guileite.dev -d www.guileite.dev
-sudo certbot certonly --nginx -d api.guileite.dev
 ```
 
 ### 3. Configure Nginx
