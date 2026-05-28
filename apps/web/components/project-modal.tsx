@@ -30,7 +30,9 @@ interface ProjectModalProps {
 export default function ProjectModal({ project, projectIndex, onClose, labels }: ProjectModalProps) {
   const [frame, setFrame] = useState(0);
   const closeBtnRef = useRef<HTMLButtonElement>(null);
-  const triggerRef = useRef<Element | null>(null);
+  const triggerRef = useRef<Element | null>(
+    typeof document !== 'undefined' ? document.activeElement : null
+  );
   const total = project.images.length || 1;
   const sig = SIGS[projectIndex % SIGS.length];
 
@@ -38,7 +40,6 @@ export default function ProjectModal({ project, projectIndex, onClose, labels }:
   const nextFrame = useCallback(() => setFrame((f) => (f + 1) % total), [total]);
 
   useEffect(() => {
-    triggerRef.current = document.activeElement;
     closeBtnRef.current?.focus();
     document.body.style.overflow = 'hidden';
 
@@ -46,6 +47,29 @@ export default function ProjectModal({ project, projectIndex, onClose, labels }:
       if (e.key === 'Escape') onClose();
       if (e.key === 'ArrowRight') nextFrame();
       if (e.key === 'ArrowLeft') prevFrame();
+      if (e.key === 'Tab') {
+        const modal = closeBtnRef.current?.closest('[role="dialog"]') as HTMLElement | null;
+        if (!modal) return;
+        const focusable = Array.from(
+          modal.querySelectorAll<HTMLElement>(
+            'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+          )
+        ).filter((el) => !el.hasAttribute('disabled'));
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey) {
+          if (document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          }
+        } else {
+          if (document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      }
     }
     document.addEventListener('keydown', onKey);
     return () => {

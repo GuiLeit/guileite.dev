@@ -28,7 +28,8 @@ interface ProjectsPageProps {
 export default async function ProjectsPage({ params, searchParams }: ProjectsPageProps) {
   const locale = params.locale as Locale;
   setRequestLocale(locale);
-  const page = Math.max(1, Number(searchParams.page ?? 1));
+  const raw = Number(searchParams.page);
+  const page = Math.max(1, Number.isFinite(raw) ? Math.floor(raw) : 1);
   const LIMIT = 9;
 
   const t = await getTranslations({ locale, namespace: 'projectsPage' });
