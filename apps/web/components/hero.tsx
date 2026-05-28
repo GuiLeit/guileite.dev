@@ -160,7 +160,7 @@ export default async function Hero({ locale }: { locale: Locale }) {
           50% { opacity: 0.4; }
         }
         @media (prefers-reduced-motion: reduce) {
-          .hero-rail ~ * [style*="animation"] { animation: none !important; }
+          @keyframes pulse-dot { from { opacity: 1; } to { opacity: 1; } }
         }
       `}</style>
     </section>
