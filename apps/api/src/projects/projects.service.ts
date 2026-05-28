@@ -146,6 +146,7 @@ export class ProjectsService {
     if (locale === DEFAULT_LOCALE) {
       throw new BadRequestException(`Cannot delete the default locale translation (${DEFAULT_LOCALE})`);
     }
+    await this.assertExists(id);
     await this.prisma.projectTranslation.delete({
       where: { projectId_locale: { projectId: id, locale } },
     });
@@ -160,7 +161,7 @@ export class ProjectsService {
 
   async updateImage(id: string, imageId: string, dto: UpdateImageDto) {
     return this.prisma.projectImage.update({
-      where: { id: imageId },
+      where: { id: imageId, projectId: id },
       data: {
         ...(dto.url !== undefined && { url: dto.url }),
         ...(dto.alt !== undefined && { alt: dto.alt }),
@@ -170,7 +171,7 @@ export class ProjectsService {
   }
 
   async removeImage(id: string, imageId: string) {
-    await this.prisma.projectImage.delete({ where: { id: imageId } });
+    await this.prisma.projectImage.delete({ where: { id: imageId, projectId: id } });
   }
 
   async reorder(dto: ReorderDto) {
