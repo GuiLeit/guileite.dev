@@ -21,7 +21,7 @@ const config: Config = {
         'accent-fg':     'var(--accent-fg)',
       },
       fontFamily: {
-        sans:    ['var(--font-sans)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans:    ['var(--font-geist-sans)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         mono:    ['var(--font-mono)', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
         display: ['var(--font-display)', 'serif'],
       },

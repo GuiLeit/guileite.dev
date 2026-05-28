@@ -1,12 +1,8 @@
-import localFont from 'next/font/local';
 import { Instrument_Serif, JetBrains_Mono } from 'next/font/google';
+import { GeistSans } from 'geist/font/sans';
 
-// Geist fonts via next/font/local using the geist package files
-export const sans = localFont({
-  src: '../node_modules/geist/dist/fonts/geist-sans/Geist-Variable.woff2',
-  variable: '--font-sans',
-  display: 'swap',
-});
+// Geist Sans via the official geist package font export
+export const sans = GeistSans;
 
 export const mono = JetBrains_Mono({
   subsets: ['latin'],
