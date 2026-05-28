@@ -11,24 +11,27 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({
-  params: { locale },
+  params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
+  const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: 'projectsPage' });
   return { title: t('title') };
 }
 
 interface ProjectsPageProps {
-  params: { locale: string };
-  searchParams: { page?: string };
+  params: Promise<{ locale: string }>;
+  searchParams: Promise<{ page?: string }>;
 }
 
 export default async function ProjectsPage({ params, searchParams }: ProjectsPageProps) {
-  const locale = params.locale as Locale;
+  const { locale } = await params;
+  const { page: pageParam } = await searchParams;
+  const locale_ = locale as Locale;
   setRequestLocale(locale);
-  const raw = Number(searchParams.page);
+  const raw = Number(pageParam);
   const page = Math.max(1, Number.isFinite(raw) ? Math.floor(raw) : 1);
   const LIMIT = 9;
 
@@ -36,7 +39,7 @@ export default async function ProjectsPage({ params, searchParams }: ProjectsPag
   const modalT = await getTranslations({ locale, namespace: 'modal' });
   const featuredT = await getTranslations({ locale, namespace: 'featured' });
 
-  const { data: projects, meta } = await getProjects(locale, page, LIMIT);
+  const { data: projects, meta } = await getProjects(locale_, page, LIMIT);
 
   const entryCount = meta.total.toString().padStart(2, '0');
 
@@ -77,7 +80,7 @@ export default async function ProjectsPage({ params, searchParams }: ProjectsPag
             <Pagination
               page={page}
               totalPages={meta.totalPages}
-              locale={locale}
+              locale={locale_}
               prevLabel={t('prev')}
               nextLabel={t('next')}
               pageOfLabel={t('pageOf')}
