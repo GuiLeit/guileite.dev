@@ -1,5 +1,5 @@
 import localFont from 'next/font/local';
-import { Instrument_Serif } from 'next/font/google';
+import { Instrument_Serif, JetBrains_Mono } from 'next/font/google';
 
 // Geist fonts via next/font/local using the geist package files
 export const sans = localFont({
@@ -8,8 +8,9 @@ export const sans = localFont({
   display: 'swap',
 });
 
-export const mono = localFont({
-  src: '../node_modules/geist/dist/fonts/geist-mono/GeistMono-Variable.woff2',
+export const mono = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
   variable: '--font-mono',
   display: 'swap',
 });
