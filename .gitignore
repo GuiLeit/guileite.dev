@@ -10,6 +10,7 @@ dist
 # env files
 .env
 .env.local
+.env.production
 .env*.local
 
 # editor
@@ -23,4 +24,3 @@ DESIGN_HANGOFF/
 Thumbs.db
 
 # prisma
-apps/api/prisma/migrations/
