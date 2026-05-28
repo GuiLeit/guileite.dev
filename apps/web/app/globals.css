@@ -1,0 +1,139 @@
+/* ─────────────────────────────────────────────────────────────────────────
+   guileite.dev — design tokens + base styles
+   Drop-in for apps/web/app/globals.css
+   Pair with the Tailwind extension shown in README.md § Tailwind mapping.
+   ───────────────────────────────────────────────────────────────────────── */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Tokens ────────────────────────────────────────────────────────────── */
+:root {
+  /* Customise this one value to change the signal accent everywhere. */
+  --accent-raw: #22c55e;     /* alternates: #FF7A45 #E8C547 #7DC3FF #F77BAA */
+  --accent: var(--accent-raw);
+  --accent-fg: #06210e;      /* for #FF7A45 use #1a0f08; #E8C547 use #2b1d04; #7DC3FF use #06192b; #F77BAA use #2b0a19 */
+
+  /* spacing scale, 4px base */
+  --s-1: 4px;  --s-2: 8px;  --s-3: 12px; --s-4: 16px; --s-5: 20px;
+  --s-6: 24px; --s-8: 32px; --s-10: 40px; --s-12: 48px; --s-16: 64px;
+  --s-20: 80px; --s-24: 96px; --s-32: 128px; --s-40: 160px;
+
+  /* type scale */
+  --t-xs: 11px;  --t-sm: 13px;  --t-base: 15px; --t-md: 17px;
+  --t-lg: 20px;  --t-xl: 28px;  --t-2xl: 40px;
+  --t-3xl: 64px; --t-4xl: 104px;
+
+  --radius: 2px;
+  --radius-lg: 6px;
+  --hairline: 1px;
+
+  --container: 1320px;
+  --gutter: clamp(20px, 4vw, 56px);
+
+  /* Motion */
+  --ease:     cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme="dark"] {
+  --bg:            oklch(0.155 0.005 60);
+  --bg-elevated:   oklch(0.190 0.006 60);
+  --bg-deep:       oklch(0.115 0.004 60);
+  --fg:            oklch(0.960 0.010 80);
+  --fg-muted:      oklch(0.660 0.012 60);
+  --fg-subtle:     oklch(0.450 0.010 60);
+  --border:        oklch(0.280 0.006 60);
+  --border-strong: oklch(0.380 0.008 60);
+  --portrait-a:    oklch(0.460 0.040 60);
+  --portrait-b:    oklch(0.220 0.020 60);
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --bg:            oklch(0.985 0.004 80);
+  --bg-elevated:   oklch(0.955 0.005 80);
+  --bg-deep:       oklch(0.920 0.006 80);
+  --fg:            oklch(0.175 0.006 60);
+  --fg-muted:      oklch(0.430 0.010 60);
+  --fg-subtle:     oklch(0.620 0.008 60);
+  --border:        oklch(0.860 0.005 80);
+  --border-strong: oklch(0.720 0.006 80);
+  --portrait-a:    oklch(0.820 0.035 80);
+  --portrait-b:    oklch(0.620 0.045 60);
+  color-scheme: light;
+}
+
+/* ── Base ──────────────────────────────────────────────────────────────── */
+@layer base {
+  html {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+    font-size: var(--t-base);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "ss01", "ss03", "cv11";
+    scroll-behavior: smooth;
+  }
+  body {
+    min-height: 100vh;
+    background: var(--bg);
+    /* warm vignette top */
+    background-image: radial-gradient(
+      ellipse at top,
+      oklch(from var(--bg) calc(l + 0.02) c h) 0%,
+      var(--bg) 60%
+    );
+  }
+
+  /* Subtle film-grain overlay, dark mode only. */
+  [data-theme="dark"] body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.6 0 0 0 0 0.55 0 0 0 0 0.5 0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
+    opacity: 0.045;
+    pointer-events: none;
+    z-index: 0;
+    mix-blend-mode: overlay;
+  }
+
+  ::selection { background: var(--accent); color: var(--accent-fg); }
+
+  /* Custom focus ring — every interactive element gets this. */
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 1px;
+  }
+  /* Remove default ring where focus-visible takes over */
+  :focus:not(:focus-visible) { outline: none; }
+
+  /* Respect reduced motion. */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+    html { scroll-behavior: auto; }
+  }
+}
+
+/* ── Utilities you'll likely want as classes (not Tailwind) ────────────── */
+@layer utilities {
+  .font-mono-features  { font-feature-settings: "ss01", "ss02", "zero"; }
+  .text-eyebrow {
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: var(--t-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--fg-subtle);
+  }
+  .hairline-t { border-top:    var(--hairline) solid var(--border); }
+  .hairline-b { border-bottom: var(--hairline) solid var(--border); }
+  .hairline-l { border-left:   var(--hairline) solid var(--border); }
+  .hairline-r { border-right:  var(--hairline) solid var(--border); }
+}
