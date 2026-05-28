@@ -35,7 +35,7 @@ export default function Footer({ locale }: { locale: Locale }) {
           <span>{t('copyright', { year })}</span>
           <span className="text-border-strong">·</span>
           <a
-            href="https://github.com/guileite/guileite.dev"
+            href="https://github.com/GuiLeit/guileite.dev"
             target="_blank"
             rel="noreferrer"
             className="text-fg-subtle transition-colors duration-150 hover:text-accent"
