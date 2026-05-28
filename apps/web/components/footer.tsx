@@ -31,8 +31,6 @@ export default function Footer({ locale }: { locale: Locale }) {
           <span>guileite.dev</span>
         </div>
 
-        <div className="text-fg-subtle">{t('tag')}</div>
-
         <div className="flex flex-wrap items-center gap-2">
           <span>{t('copyright', { year })}</span>
           <span className="text-border-strong">·</span>

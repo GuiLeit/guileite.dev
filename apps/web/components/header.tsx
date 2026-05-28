@@ -1,10 +1,10 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import type { Locale } from '../i18n';
+import { useTheme } from '../providers/theme-provider';
 
 function ChipToggle({
   leftLabel,
@@ -38,19 +38,7 @@ export default function Header({ locale }: { locale: Locale }) {
   const router = useRouter();
   const pathname = usePathname();
 
-  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
-
-  useEffect(() => {
-    const current = document.documentElement.getAttribute('data-theme');
-    if (current === 'light') setTheme('light');
-  }, []);
-
-  function toggleTheme() {
-    const next = theme === 'dark' ? 'light' : 'dark';
-    setTheme(next);
-    document.documentElement.setAttribute('data-theme', next);
-    try { localStorage.setItem('theme', next); } catch {}
-  }
+  const { theme, toggle: toggleTheme } = useTheme();
 
   function switchLocale() {
     const next: Locale = locale === 'pt-BR' ? 'en' : 'pt-BR';
@@ -107,31 +95,3 @@ export default function Header({ locale }: { locale: Locale }) {
   );
 }
 
-function NavLink({
-  href,
-  index,
-  active,
-  children,
-}: {
-  href: string;
-  index: string;
-  active: boolean;
-  children: React.ReactNode;
-}) {
-  return (
-    <Link
-      href={href}
-      className="relative flex items-center gap-1.5 text-sm no-underline transition-colors duration-150"
-      style={{ color: active ? 'var(--fg)' : 'var(--fg-muted)' }}
-    >
-      <span className="font-mono text-[11px] text-fg-subtle">{index}</span>
-      <span>{children}</span>
-      {active && (
-        <span
-          className="absolute bottom-[-2px] left-[22px] h-[2px] w-[18px] bg-accent"
-          aria-hidden
-        />
-      )}
-    </Link>
-  );
-}
