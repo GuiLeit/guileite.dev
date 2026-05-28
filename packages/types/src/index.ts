@@ -17,8 +17,8 @@ export interface Project {
   projectUrl: string | null;
   githubUrl: string | null;
   orderIndex: number;
-  resolvedLocale: string;
-  requestedLocale: string;
+  resolvedLocale: Locale;
+  requestedLocale: Locale;
   images: ProjectImage[];
 }
 
@@ -29,6 +29,6 @@ export interface PaginatedProjects {
     limit: number;
     total: number;
     totalPages: number;
-    locale: string;
+    locale: Locale;
   };
 }
