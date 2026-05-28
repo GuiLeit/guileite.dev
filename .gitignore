@@ -1,2 +1,26 @@
+# dependencies
+node_modules
+.pnpm-store
+
+# build outputs
+.next
+dist
+.turbo
+
+# env files
 .env
+.env.local
+.env*.local
+
+# editor
 .vscode
+
+# design handoff (large reference files)
+DESIGN_HANGOFF/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# prisma
+apps/api/prisma/migrations/
