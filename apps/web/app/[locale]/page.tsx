@@ -7,10 +7,11 @@ import FeaturedProjects from '../../components/featured-projects';
 import Contact from '../../components/contact';
 
 export async function generateMetadata({
-  params: { locale },
+  params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
+  const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: 'hero' });
   return {
@@ -19,7 +20,8 @@ export async function generateMetadata({
   };
 }
 
-export default function HomePage({ params: { locale } }: { params: { locale: string } }) {
+export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   setRequestLocale(locale);
   return (
     <>
