@@ -4,6 +4,7 @@ import { getMessages, getTranslations } from 'next-intl/server';
 import { sans, mono, display } from '../fonts';
 import '../globals.css';
 import { locales, type Locale } from '../../i18n';
+import Header from '../../components/header';
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -62,7 +63,7 @@ export default async function LocaleLayout({
       </head>
       <body>
         <NextIntlClientProvider messages={messages}>
-          {/* Header and Footer are added in Task 6/10 */}
+          <Header locale={locale as Locale} />
           <main>{children}</main>
         </NextIntlClientProvider>
       </body>
