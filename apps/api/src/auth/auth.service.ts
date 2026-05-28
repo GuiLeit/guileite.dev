@@ -8,7 +8,6 @@ export class AuthService {
     if (!process.env.ADMIN_PASSWORD_HASH) {
       throw new Error('ADMIN_PASSWORD_HASH env var is required');
     }
-    // TODO (Task 8): add JWT_SECRET presence check in apps/api/src/main.ts bootstrap
   }
 
   async login(password: string): Promise<string> {
