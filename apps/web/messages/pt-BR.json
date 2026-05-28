@@ -5,27 +5,27 @@
     "projects": "Projetos"
   },
   "hero": {
-    "eyebrow": "ATUALMENTE / EM SÃO PAULO",
-    "role": "Software Developer",
-    "headline": "Construindo ferramentas pequenas, deliberadas e duráveis.",
-    "bio": "Sou desenvolvedor com foco em sistemas distribuídos, ferramentas para devs e interfaces que não envelhecem mal. Escrevo principalmente em TypeScript e Go. Antes disso, fui engenheiro de áudio — uma profissão diferente que me ensinou as mesmas coisas: ouvir antes de falar e medir antes de decidir.",
+    "eyebrow": "BACKEND ENGINEER / SÃO PAULO",
+    "role": "Engenheiro de Software Backend",
+    "headline": "Projetando APIs e microsserviços que sobrevivem à escala e ao tempo.",
+    "bio": "Engenheiro backend com mais de 3 anos projetando e mantendo APIs REST e microsserviços em produção com Java e Spring Boot. Trabalho em sistemas distribuídos e mobile, aplicando Clean Code e SOLID onde o impacto é mensurável. Cursando Pós-Graduação em Engenharia Java na FIAP.",
     "ctaProjects": "Ver projetos",
     "ctaContact": "Entrar em contato",
     "meta": {
-      "status": "Aberto a colaborações",
+      "status": "Aberto a novas oportunidades",
       "location": "São Paulo · GMT-3",
-      "updated": "Atualizado 27.MAI.2026",
+      "updated": "Atualizado 28.MAI.2026",
       "portrait": "RETRATO / 2025"
     }
   },
   "skills": {
     "title": "Stack",
-    "caption": "Ferramentas que uso com frequência e confiança.",
+    "caption": "Ferramentas que uso com frequência e confiança em produção.",
     "groups": {
       "languages": "Linguagens",
       "frameworks": "Frameworks",
       "tools": "Ferramentas",
-      "databases": "Bancos de dados"
+      "databases": "Banco de Dados"
     }
   },
   "featured": {

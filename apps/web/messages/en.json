@@ -5,22 +5,22 @@
     "projects": "Projects"
   },
   "hero": {
-    "eyebrow": "CURRENTLY / IN SÃO PAULO",
-    "role": "Software Developer",
-    "headline": "Building small, deliberate, durable tools.",
-    "bio": "Developer focused on distributed systems, developer tooling and interfaces that age well. I mostly write TypeScript and Go. Before this, I was an audio engineer — a different trade that taught me the same things: listen before you speak, measure before you decide.",
+    "eyebrow": "BACKEND ENGINEER / SÃO PAULO",
+    "role": "Backend Software Engineer",
+    "headline": "Designing APIs and microservices built to scale and last.",
+    "bio": "Backend engineer with 3+ years designing and maintaining REST APIs and microservices in production with Java and Spring Boot. I work across distributed systems and mobile, applying Clean Code and SOLID where the impact is measurable. Currently pursuing a postgraduate degree in Java Engineering at FIAP.",
     "ctaProjects": "See projects",
     "ctaContact": "Get in touch",
     "meta": {
-      "status": "Open to collaborations",
+      "status": "Open to new roles",
       "location": "São Paulo · GMT-3",
-      "updated": "Updated 2026-05-27",
+      "updated": "Updated 2026-05-28",
       "portrait": "PORTRAIT / 2025"
     }
   },
   "skills": {
     "title": "Stack",
-    "caption": "Tools I use often and with confidence.",
+    "caption": "Tools I work with regularly and confidently in production.",
     "groups": {
       "languages": "Languages",
       "frameworks": "Frameworks",

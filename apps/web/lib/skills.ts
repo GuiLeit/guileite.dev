@@ -1,8 +1,8 @@
 export const SKILLS = {
-  languages:  ['TypeScript', 'Go', 'Python', 'Rust', 'SQL', 'Bash'],
-  frameworks: ['Next.js', 'NestJS', 'React', 'Tailwind', 'Prisma', 'tRPC'],
-  tools:      ['Git', 'Docker', 'Turborepo', 'Vercel', 'Fly.io', 'Figma'],
-  databases:  ['PostgreSQL', 'Redis', 'SQLite', 'Neon'],
+  languages:  ['Java', 'TypeScript', 'PHP', 'SQL'],
+  frameworks: ['Spring Boot', 'NestJS', 'Laravel', 'React Native', 'ReactJS'],
+  tools:      ['Docker', 'AWS', 'Maven', 'Swagger / OpenAPI', 'Git'],
+  databases:  ['PostgreSQL', 'MySQL', 'Cassandra', 'JPA / Hibernate'],
 } as const;
 
 export type SkillGroup = keyof typeof SKILLS;
