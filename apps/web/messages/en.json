@@ -1,0 +1,72 @@
+{
+  "nav": {
+    "work": "Work",
+    "contact": "Contact",
+    "projects": "Projects"
+  },
+  "hero": {
+    "eyebrow": "BACKEND ENGINEER / SÃO PAULO",
+    "role": "Backend Software Engineer",
+    "headline": "Designing APIs and microservices built to scale and last.",
+    "bio": "Backend engineer with 3+ years designing and maintaining REST APIs and microservices in production with Java and Spring Boot. I work across distributed systems and mobile, applying Clean Code and SOLID where the impact is measurable. Currently pursuing a postgraduate degree in Java Engineering at FIAP.",
+    "ctaProjects": "See projects",
+    "ctaContact": "Get in touch",
+    "meta": {
+      "status": "Open to new roles",
+      "location": "São Paulo · GMT-3",
+      "updated": "Updated 2026-05-28",
+      "portrait": "PORTRAIT / 2025"
+    }
+  },
+  "skills": {
+    "title": "Stack",
+    "caption": "Tools I work with regularly and confidently in production.",
+    "groups": {
+      "languages": "Languages",
+      "frameworks": "Frameworks",
+      "tools": "Tools",
+      "databases": "Databases"
+    }
+  },
+  "featured": {
+    "title": "Selected work",
+    "caption": "Three recent projects. The full list is just below.",
+    "seeMore": "See all projects",
+    "live": "Demo",
+    "repo": "Repository"
+  },
+  "contact": {
+    "title": "Contact",
+    "caption": "Email is fastest. I usually reply the same day.",
+    "labels": {
+      "email": "Email",
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "twitter": "X"
+    }
+  },
+  "projectsPage": {
+    "title": "All projects",
+    "caption": "The full archive, newest to oldest.",
+    "empty": "No projects published yet.",
+    "pageOf": "Page {page} of {total}",
+    "prev": "Previous",
+    "next": "Next"
+  },
+  "modal": {
+    "close": "Close",
+    "prev": "Previous image",
+    "next": "Next image",
+    "visit": "Visit project",
+    "code": "View code"
+  },
+  "footer": {
+    "tag": "Personal site, written by hand.",
+    "source": "Source",
+    "copyright": "© {year} Guilherme Leite"
+  },
+  "common": {
+    "lang": "Language",
+    "theme": "Theme"
+  }
+}

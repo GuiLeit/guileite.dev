@@ -1,0 +1,72 @@
+{
+  "nav": {
+    "work": "Trabalhos",
+    "contact": "Contato",
+    "projects": "Projetos"
+  },
+  "hero": {
+    "eyebrow": "BACKEND ENGINEER / SÃO PAULO",
+    "role": "Engenheiro de Software Backend",
+    "headline": "Projetando APIs e microsserviços que sobrevivem à escala e ao tempo.",
+    "bio": "Engenheiro backend com mais de 3 anos projetando e mantendo APIs REST e microsserviços em produção com Java e Spring Boot. Trabalho em sistemas distribuídos e mobile, aplicando Clean Code e SOLID onde o impacto é mensurável. Cursando Pós-Graduação em Engenharia Java na FIAP.",
+    "ctaProjects": "Ver projetos",
+    "ctaContact": "Entrar em contato",
+    "meta": {
+      "status": "Aberto a novas oportunidades",
+      "location": "São Paulo · GMT-3",
+      "updated": "Atualizado 28.MAI.2026",
+      "portrait": "RETRATO / 2025"
+    }
+  },
+  "skills": {
+    "title": "Stack",
+    "caption": "Ferramentas que uso com frequência e confiança em produção.",
+    "groups": {
+      "languages": "Linguagens",
+      "frameworks": "Frameworks",
+      "tools": "Ferramentas",
+      "databases": "Banco de Dados"
+    }
+  },
+  "featured": {
+    "title": "Trabalhos selecionados",
+    "caption": "Três projetos recentes. A lista completa fica logo adiante.",
+    "seeMore": "Ver todos os projetos",
+    "live": "Demo",
+    "repo": "Repositório"
+  },
+  "contact": {
+    "title": "Contato",
+    "caption": "A maneira mais rápida é por e-mail. Costumo responder no mesmo dia.",
+    "labels": {
+      "email": "E-mail",
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "twitter": "X"
+    }
+  },
+  "projectsPage": {
+    "title": "Todos os projetos",
+    "caption": "Arquivo completo, do mais recente ao mais antigo.",
+    "empty": "Ainda não há projetos publicados.",
+    "pageOf": "Página {page} de {total}",
+    "prev": "Anterior",
+    "next": "Próximo"
+  },
+  "modal": {
+    "close": "Fechar",
+    "prev": "Imagem anterior",
+    "next": "Próxima imagem",
+    "visit": "Visitar projeto",
+    "code": "Ver código"
+  },
+  "footer": {
+    "tag": "Site pessoal, escrito à mão.",
+    "source": "Código-fonte",
+    "copyright": "© {year} Guilherme Leite"
+  },
+  "common": {
+    "lang": "Idioma",
+    "theme": "Tema"
+  }
+}
