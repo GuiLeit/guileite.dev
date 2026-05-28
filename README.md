@@ -151,46 +151,101 @@ Swagger UI: `http://localhost:3001/docs`
 
 ---
 
-## Deployment
+## Deployment (VPS + Docker + Nginx)
 
-### Database
+Self-hosted on a VPS with Docker Compose and Nginx as a reverse proxy.
 
-Provision a managed PostgreSQL instance (Railway, Supabase, Neon, etc.) and set `DATABASE_URL` in your API host's environment.
+**Architecture:**
+- `guileite.dev` → nginx → Next.js container (port 3000, localhost only)
+- `api.guileite.dev` → nginx → NestJS container (port 3001, localhost only)
+- Both containers share an internal Docker network with the PostgreSQL container
 
-Run migrations against production:
+### Prerequisites
 
-```bash
-DATABASE_URL="<prod-url>" npx prisma migrate deploy
-```
+- VPS with Docker, Docker Compose v2, and Nginx installed
+- DNS A records pointing `guileite.dev`, `www.guileite.dev`, and `api.guileite.dev` to your VPS IP
+- Certbot installed (`apt install certbot python3-certbot-nginx`)
 
-### API (`apps/api`)
-
-Any Node.js host (Railway, Render, Fly.io, VPS):
-
-```bash
-# Build
-npm run build   # from apps/api/ — outputs to apps/api/dist/
-
-# Start
-node dist/main.js
-```
-
-Required env vars in production: `DATABASE_URL`, `JWT_SECRET`, `ADMIN_PASSWORD_HASH`, `CORS_ORIGIN`, `NODE_ENV=production`.
-
-### Frontend (`apps/web`)
-
-Deploy to Vercel (recommended for Next.js):
+### 1. Clone and configure environment
 
 ```bash
-# From repo root
-npx vercel
+git clone https://github.com/GuiLeit/guileite.dev.git
+cd guileite.dev
+
+# Copy and fill in production secrets
+cp .env.prod.example .env.prod
+nano .env.prod
 ```
 
-Set these in the Vercel project settings:
+Generate the required secrets:
 
+```bash
+# JWT secret
+openssl rand -hex 64
+
+# Admin password hash
+node -e "const b=require('bcryptjs'); b.hash('your-password', 12).then(console.log)"
 ```
-NEXT_PUBLIC_USE_STUB=false
-API_URL=https://api.guileite.dev/api/v1   # your API URL
+
+### 2. Obtain SSL certificates
+
+```bash
+# Run certbot before starting nginx (HTTP-only mode first)
+sudo certbot certonly --nginx -d guileite.dev -d www.guileite.dev
+sudo certbot certonly --nginx -d api.guileite.dev
+```
+
+### 3. Configure Nginx
+
+```bash
+sudo cp nginx/guileite.dev.conf /etc/nginx/sites-available/guileite.dev
+sudo ln -s /etc/nginx/sites-available/guileite.dev /etc/nginx/sites-enabled/
+sudo nginx -t && sudo systemctl reload nginx
+```
+
+### 4. Build and start containers
+
+```bash
+docker compose -f docker-compose.prod.yml --env-file .env.prod up -d --build
+```
+
+This builds the `web` and `api` images from source and starts all three containers (`db`, `api`, `web`).
+
+### 5. Run database migrations
+
+```bash
+docker compose -f docker-compose.prod.yml exec api npx prisma migrate deploy
+```
+
+Seed initial data (first deploy only):
+
+```bash
+docker compose -f docker-compose.prod.yml exec api npx prisma db seed
+```
+
+### Updating to a new version
+
+```bash
+git pull
+docker compose -f docker-compose.prod.yml --env-file .env.prod up -d --build
+docker compose -f docker-compose.prod.yml exec api npx prisma migrate deploy
+```
+
+### Useful production commands
+
+```bash
+# View logs
+docker compose -f docker-compose.prod.yml logs -f web
+docker compose -f docker-compose.prod.yml logs -f api
+
+# Restart a single service
+docker compose -f docker-compose.prod.yml restart api
+
+# Stop everything
+docker compose -f docker-compose.prod.yml down
+
+# Remove volumes (destructive — deletes DB data)
+docker compose -f docker-compose.prod.yml down -v
 ```
 
 ---
