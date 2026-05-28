@@ -32,7 +32,7 @@ export default function ProjectCard({ project, index, onOpen, liveLabel, repoLab
 
   return (
     <article
-      className="group relative cursor-pointer border border-border bg-bg transition-colors duration-200 hover:bg-bg-elevated"
+      className="group relative flex h-full cursor-pointer flex-col border border-border bg-bg transition-colors duration-200 hover:bg-bg-elevated"
       style={{ borderRadius: 'var(--radius)' }}
       onClick={() => onOpen(project)}
       onKeyDown={(e) => { if (e.key === 'Enter') onOpen(project); }}
@@ -89,7 +89,7 @@ export default function ProjectCard({ project, index, onOpen, liveLabel, repoLab
       </div>
 
       {/* Body */}
-      <div className="p-4">
+      <div className="flex flex-1 flex-col p-4">
         <div className="mb-2 flex items-start justify-between gap-3">
           <h3 className="font-display leading-tight" style={{ fontSize: '28px' }}>
             {project.title}
@@ -99,12 +99,11 @@ export default function ProjectCard({ project, index, onOpen, liveLabel, repoLab
           )}
         </div>
 
-        <p
-          className="mb-4 font-sans text-[13px] leading-[1.55] text-fg-muted"
-          style={{ textWrap: 'pretty' } as React.CSSProperties}
-        >
+        <p className="mb-4 line-clamp-3 min-h-[60px] font-sans text-[13px] leading-[1.55] text-fg-muted">
           {project.description}
         </p>
+
+        <div className="flex-1" />
 
         <div className="hairline-t flex items-center justify-between gap-3 pt-3">
           <div className="flex flex-wrap gap-1.5">

@@ -37,7 +37,7 @@ export default function ProjectsGrid({
         style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 340px), 1fr))' }}
       >
         {projects.map((project, i) => (
-          <div key={project.id} className="bg-bg">
+          <div key={project.id} className="h-full bg-bg">
             <ProjectCard
               project={project}
               index={startIndex + i}
