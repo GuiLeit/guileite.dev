@@ -39,7 +39,6 @@ services:
       - api
     environment:
       NODE_ENV: production
-      NEXT_PUBLIC_USE_STUB: "false"
       API_URL: ${API_URL}
     networks:
       - internal
