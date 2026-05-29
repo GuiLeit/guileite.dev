@@ -28,7 +28,7 @@ services:
     networks:
       - internal
     ports:
-      - "127.0.0.1:3001:3001"
+      - "127.0.0.1:4001:3001"
 
   web:
     build:
@@ -44,7 +44,7 @@ services:
     networks:
       - internal
     ports:
-      - "127.0.0.1:3000:3000"
+      - "127.0.0.1:4000:3000"
 
 volumes:
   postgres_data:
