@@ -1,14 +1,11 @@
+export const dynamic = 'force-dynamic';
+
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { Locale } from '../../../i18n';
-import { locales } from '../../../i18n';
 import { getProjects } from '../../../lib/api';
 import ProjectsGrid from '../../../components/projects-grid';
 import Pagination from '../../../components/pagination';
-
-export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
-}
 
 export async function generateMetadata({
   params,
