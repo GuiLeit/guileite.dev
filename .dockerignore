@@ -1,0 +1,23 @@
+# Git
+.git
+.gitignore
+
+# Env files — never copy secrets or dev config into images
+.env*
+apps/**/.env*
+
+# Dev artifacts
+node_modules
+**/node_modules
+.turbo
+**/.turbo
+
+# Build outputs that don't belong in the image build context
+apps/web/.next
+apps/api/dist
+
+# Editor / OS
+.vscode
+.idea
+*.log
+.DS_Store

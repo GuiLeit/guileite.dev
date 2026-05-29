@@ -40,6 +40,8 @@ services:
     build:
       context: .
       dockerfile: apps/web/Dockerfile
+      args:
+        NEXT_PUBLIC_SITE_URL: https://guileite.dev
     restart: unless-stopped
     depends_on:
       - api
